@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<body  background="resources/imagens/fundo_tela_principal.jpg">
+			<BR /><BR /><BR /><BR /><BR /><BR />
+			<BR /><BR /><BR /><BR /><BR /><BR />
+			<BR /><BR /><BR /><BR /><BR /><BR />
+			<center><h:form>
+				<h:panelGrid columns="2">
+					<h:outputText value="#{loginBean.msg}" />
+					<h:outputText value="" />
+					<h:outputLabel value="Login:" for="nome" />
+					<h:inputText id="nome" value="#{loginBean.usuario.login }" />
+					<h:outputLabel value="Password:" for="password" />
+					<h:inputSecret id="password" value="#{loginBean.usuario.senha}" />
+					<h:commandButton action="#{loginBean.efetuaLogin }" value="Logar" />
+				</h:panelGrid>
+			</h:form></center>
+			
+
+</body>
+
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	>
+
+<h:body>
+
+<ui:composition template="/templates/principal.xhtml">
+		<ui:define name="cabecalho">
+			<h1> Cadastro de Objetivo</h1>
+		</ui:define>
+		<ui:define name="usuarioLogado">
+		</ui:define>
+		<ui:define name="barra_opcoes">
+			<h:form id="menu">
+				<table width="100%">
+					<tr>
+						<td><h:commandButton value="Incluir" action="/objetivo2"
+								image="/resources/imagens/mainnav_include_over.gif" /> 
+								<h:commandButton
+								value="Consultas" action="/pesquisaobjetivo"
+								image="/resources/imagens/mainnav_exit_over.gif" /></td>
+
+					</tr>
+				</table>
+			</h:form>
+		</ui:define>
+		<ui:define name="corpo">
+			<h:form>
+				<h:messages errorClass="erro" />
+				<h:panelGrid columns="2">
+					<h:outputText value="#{objetivoBean.msg}" />
+					<h:outputText value="" />
+
+					<h:inputHidden id="id" value="#{objetivoBean.objetivo.id}" size="5" />
+					<h:outputText value="" />
+
+					<h:outputLabel value="Nome:" for="nome" />
+					<h:inputText id="nome" value="#{objetivoBean.objetivo.nome}"
+						required="true" maxlength="50" size="80"/>
+
+					<h:outputLabel value="Descrição:" for="descricao" />
+					<h:inputTextarea id="descricao" value="#{objetivoBean.objetivo.descricao}" 
+					 cols="50"  rows="6" />
+
+					<h:commandButton action="#{objetivoBean.salvar}" value="salvar"
+						image="/resources/imagens/mainnav_save_over.gif" />
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	
+	</h:body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<ui:composition template="/templates/principal.xhtml">
+	<ui:define name="cabecalho">
+			<h1>Alunos</h1>
+	</ui:define>
+	<ui:define name="barra_opcoes">
+			<h:form id="menu">
+				<table width="100%">
+					<tr>
+						<td><h:commandButton value="Incluir" action="/aluno"
+								image="/resources/imagens/mainnav_include_over.gif" /> </td>
+
+					</tr>
+				</table>
+			</h:form>
+		</ui:define>
+	<ui:define name="corpo">
+		<h:form id="listagem">
+			<h:form>
+				<h:inputText value="#{alunoBean.nomePesquisa}" />
+				<h:commandButton value="Pesquisar" render="out" image="/resources/imagens/tab_search_sel.gif"
+					action="#{alunoBean.pesquisar}">
+					<f:param name="nomePesquisa"
+						value="#{alunoBean.nomePesquisa}" />
+				</h:commandButton>
+			</h:form>
+			<p:dataTable style="height: 400px" scrollable="false"
+				value="#{alunoBean.lista}" var="aluno" paginator="true"
+				dynamic="true" lazy="true" rows="10">
+				
+				<p:column width="70">
+					<f:facet name="header">Codigo</f:facet>
+					<h:outputText value="#{aluno.id}">
+					</h:outputText>
+				</p:column>
+				
+				<p:column width="400">
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+				
+				<p:column width="100">
+					<f:facet name="header">Telefone</f:facet>
+					<h:outputText value="#{aluno.tel_residencial}" />
+				</p:column>
+				
+				<p:column>
+					<h:commandLink action="#{alunoBean.editar}">
+						<h:graphicImage library="imagens" name="editar16.png" style="border:0"/>
+						<f:setPropertyActionListener target="#{alunoBean.aluno}" value="#{aluno}"/>
+					</h:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

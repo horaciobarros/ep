@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<ui:composition template="/templates/principal.xhtml">
+	<ui:define name="cabecalho">
+		<h1>Exercicios de flexibilidade</h1>
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="listagem">
+			<p:dataTable style="height: 400px" scrollable="false"
+				value="#{exercicioFlexibilidadeBean.lista}" var="ef"
+				paginator="true" dynamic="true" lazy="true" rows="6">
+
+				<p:column width="70">
+					<f:facet name="header">Codigo</f:facet>
+					<h:outputText value="#{ef.id}">
+					</h:outputText>
+				</p:column>
+
+				<p:column width="100">
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{ef.nome}" />
+				</p:column>
+
+				<p:column width="400">
+					<f:facet name="header">Descrição</f:facet>
+					<h:outputText value="#{ef.descricao}" />
+				</p:column>
+
+				<p:column>
+					<h:commandLink action="#{exercicioFlexibilidadeBean.editar}">
+						<h:graphicImage library="imagens" name="editar16.png"
+							style="border:0" />
+						<f:setPropertyActionListener
+							target="#{exercicioFlexibilidadeBean.ef}" value="#{ef}" />
+					</h:commandLink>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+
+
+</html>

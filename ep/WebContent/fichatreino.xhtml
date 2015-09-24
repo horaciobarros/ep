@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/principal.xhtml">
+		<h:messages errorClass="erro" />
+		<ui:define name="cabecalho">
+			<h1>Ficha de treinamento</h1>
+		</ui:define>
+
+		<ui:define name="corpo">
+			<h:form>
+
+				<p:tabView dynamic="true" cache="true">
+					<p:tab title="Dados do aluno">
+						<h:inputHidden id="id" value="#{treinamentoBean.t.id}" size="5" />
+
+						<h:panelGrid columns="2" id="panel1">
+
+							<h:outputLabel value="Aluno:" />
+							<h:selectOneMenu id="aluno" value="#{treinamentoBean.aluno}"
+								immediate="true" style="width: 450px;" onchange="submit()"
+								rendered="#{!empty treinamentoBean}">
+								<f:selectItem itemLabel="Selecione o aluno" itemValue="Nenhum" />
+								<f:selectItems value="#{treinamentoBean.alunos}" var="aluno"
+									itemValue="#{aluno}" target="#{aluno}"
+									itemLabel="#{aluno.nome}" />
+
+							</h:selectOneMenu>
+							<h:outputLabel value="" />
+							<p:graphicImage value="#{treinamentoBean.imagem}" id="imagem"
+								cache="false" width="150" height="100" />
+
+							<h:outputText value="Data prescrição:" />
+							<p:calendar id="data" value="#{treinamentoBean.t.data}"
+								pattern="dd/MM/yyyy" width="10px" />
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" id="panel2">
+							<h:outputText value="Objetivo:" />
+							<h:selectOneMenu id="objetivo"
+								value="#{treinamentoBean.objetivo}">
+								<f:selectItem itemLabel="Selecione o objetivo"
+									itemValue="Nenhum" />
+								<f:selectItems value="#{treinamentoBean.objetivos}"
+									var="objetivo" itemValue="#{objetivo}"
+									itemLabel="#{objetivo.nome}" />
+							</h:selectOneMenu>
+
+							<h:outputText value="Observação:" />
+							<h:inputText value="#{treinamentoBean.t.obs}" rows="5" />
+
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Exercícios cardiovasculares">
+					</p:tab>
+					<p:tab title="Exercícios de flexibilidade">
+					</p:tab>
+					<p:tab title="Exercícios de musculação">
+					</p:tab>
+					<p:tab title="Finalizar/Imprimir">
+						<h:commandButton action="#{treinamentoBean.salvar}" value="salvar"
+							image="/resources/imagens/mainnav_save_over.gif" />
+					</p:tab>
+				</p:tabView>
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

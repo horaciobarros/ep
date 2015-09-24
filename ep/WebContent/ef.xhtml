@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:body>
+
+	<ui:composition template="/templates/principal.xhtml">
+		<ui:define name="cabecalho">
+			<h1>Exercícios de flexibilidade</h1>
+		</ui:define>
+		<ui:define name="usuarioLogado">
+		</ui:define>
+		<ui:define name="barra_opcoes">
+			<h:form id="menu">
+				<table width="100%">
+					<tr>
+						<td><h:commandButton value="Incluir" action="/ef"
+								image="/resources/imagens/mainnav_include_over.gif" /> <h:commandButton
+								value="Consultas" action="/pesquisaef"
+								image="/resources/imagens/mainnav_exit_over.gif" />
+						</td>
+
+					</tr>
+				</table>
+			</h:form>
+		</ui:define>
+		<ui:define name="corpo">
+			<h:form>
+				<h:messages errorClass="erro" />
+				<h:panelGrid columns="2">
+					<h:outputText value="#{exercicioFlexibilidadeBean.msg}" />
+					<h:outputText value="" />
+
+					<h:inputHidden id="id" value="#{exercicioFlexibilidadeBean.ef.id}"
+						size="5" />
+					<h:outputText value="" />
+
+					<h:outputLabel value="Nome:" for="nome" />
+					<h:inputText id="nome"
+						value="#{exercicioFlexibilidadeBean.ef.nome}" required="true"
+						maxlength="50" size="80" />
+
+					<h:outputLabel value="Tipo de membro:" />
+					<h:selectOneMenu id="tipos" value="#{exercicioFlexibilidadeBean.ef.tipomembro}" style="width: 450px;">
+						<f:selectItem itemLabel="Selecione o tipo de membro" itemValue="#{exercicioFlexibilidadeBean.ef.tipomembro}" />
+						<f:selectItems value="#{exercicioFlexibilidadeBean.tipos}" var="tipomembro"
+							itemValue="#{tipomembro.id}" itemLabel="#{tipomembro.nome}" />
+							<p:ajax update="tipos" listener="#{exercicioFlexibilidadeBean.changeTipos}" />
+					</h:selectOneMenu>
+
+
+					<h:outputLabel value="Descrição:" for="descricao" />
+					<h:inputTextarea id="descricao"
+						value="#{exercicioFlexibilidadeBean.ef.descricao}" cols="50"
+						rows="6" />
+
+					<h:commandButton action="#{exercicioFlexibilidadeBean.salvar}"
+						value="salvar" image="/resources/imagens/mainnav_save_over.gif" />
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+
+
+</html>

@@ -1,0 +1,91 @@
+body, td, th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+}
+
+th {
+	background: url(#{resource['imagens:fundo_claro.png']}); 
+	min-height: 10px;
+	padding: 3px;
+}
+
+img {
+	border:0px;
+}
+
+#box {
+	background: #EEE8AA; 
+	height:100px; left:50%; 
+	margin:-240px 0 0 -320px; 
+	position:absolute; 
+	top:70%; width:250px}
+	
+}
+
+#container {
+	width: 770px;
+	height: 100%;
+	margin: 0 auto
+}
+	
+#titulo {
+	float: left;
+	font-size: 25pt;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#barra_menu {
+	background: url(#{resource['imagens:fundo_barra_menu.png']}) repeat-x; 
+	min-height: 35px;
+	padding: 3px;
+	clear:both;
+}
+
+#barra_opcoes {
+	background: #C1CDC1; 
+	min-height: 35px;
+	padding: 3px;
+	clear:both;
+}
+
+#corpo {
+	background: #E3E3E3;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	min-height: 300px;
+}
+
+#corpologin {
+	background: url(#{resource['imagens:fundo_tela_principal.jpg']});
+	background: #E3E3E3;
+	
+}
+
+#rodape {
+	background: #C1CDC1;
+	height: 20px;
+	margin-top: 5px;
+	padding: 10px;
+	text-align: center;
+}
+
+
+.info {
+	font-weight: bold;
+	color: green;
+}
+
+.warn {
+	font-weight: bold;
+	color: #FFCC00;
+}
+
+.fatal, .error {
+	font-weight: bold;
+	color: red;
+}
+
+.erro{  
+       color: red;  
+}  
